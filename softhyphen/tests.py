@@ -32,7 +32,7 @@ class SoftHyphenTest(TestCase):
     
     def test_simple_filter(self):
         """
-        Test simple usage of the hyphenation method via the femplatetag.
+        Test simple usage of the hyphenation method via the templatetag.
         """
         before = "<h1>I love hyphenation</h1>"
         after = softhyphen(before)
@@ -40,7 +40,7 @@ class SoftHyphenTest(TestCase):
         
     def test_spanish_filter(self):
         """
-        Test usage of the blacklist with spanish via the femplatetag.
+        Test usage of the blacklist with spanish via the templatetag.
         """
         before = "<h1>Me encanta guiones</h1>"
         after = softhyphen(before, language='es-es')
