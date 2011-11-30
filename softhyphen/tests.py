@@ -12,7 +12,7 @@ class SoftHyphenTest(TestCase):
         after = hyphenate_html(before)
         self.failUnlessEqual(after, "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>")
     
-    def test_tag_blacklist(self):
+    def test_tag_blacklist_call(self):
         """
         Test the blacklist to make sure some tags don't get hyphenated.
         """
@@ -20,7 +20,7 @@ class SoftHyphenTest(TestCase):
         after = hyphenate_html(before)
         self.failUnlessEqual(after, "<code>I love hyphenation</code>")
     
-    def test_spanish(self):
+    def test_spanish_call(self):
         before = "<h1>Me encanta guiones</h1>"
         after = hyphenate_html(before, language='es-es')
         self.failUnlessEqual(after, "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>")
