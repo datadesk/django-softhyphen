@@ -1,0 +1,33 @@
+OOo Huhyphn - magyar elválasztási szótár kiegészítve a kettőzött többjegyű
+mássalhangzók és a Magyar Ispell helyesírási szótár csak Unicode
+karakterkészlettel leírható idegen szavainak elválasztásának képességével.
+
+A  legteljesebb magyar elválasztási mintagyűjtemény TeX, OpenOffice.org és
+valamennyi kibővített LibHnj könyvtárat
+(L. http://www.sourceforge.net/project/hunspell) használó program számára.
+
+A Huhyphn szótárat Nagy Bence <gimb (at) freemail (dot) hu> készítette.
+Változatszáma: v20060713.
+Honlap: http://www.tipogral.hu
+Licenc: GPL v2, 2006
+
+A kibővítés Németh László <nemeth (at) OOo> munkája.
+A kiadás dátuma: 2006-12-13
+Honlap: http://sourceforge.net/project/magyarispell (OOo Huhyphn package)
+Licenc:  MPL/GPL/LGPL
+
+hyph_hu_HU.dic: unicode-os változat, min. OpenOffice.org 2.1-hez
+hyph_hu_HU_nonutf: ISO8859-2-es változat, régebbi OOo-hoz, Scribushoz stb.
+
+Telepítés: az OpenOffice.org telepítés dictionary.lst állományában
+helyezzük el a következő sort, és másoljuk a hyph_hu_HU.dic állományt
+ugyanebbe a könyvtárba (pl. Linuxon az .openoffice.org2/user/wordbook
+könyvtárba):
+
+HYPH hu HU hyph_hu_HU
+
+vagy válasszuk a Fájl->Tündérek->Új szótárak telepítése menüpontot,
+és telepítsük az elválasztási szótárat az internetről, vagy töltsük le
+a magyar nyelvi csomagot (pack file) a
+http://wiki.services.openoffice.org/wiki/dictionaries oldalról,
+és telepítsük az előző menüponttal előhívható tündér segítségével.
