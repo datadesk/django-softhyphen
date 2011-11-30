@@ -1,8 +1,15 @@
 from html import hyphenate_html
 from django.test import TestCase
+from django.template import Template, Context
+from templatetags.softhyphen_tags import softhyphen
 
 
 class SoftHyphenTest(TestCase):
+    
+    def render(self, t, **c):
+        ctx = Context(c)
+        out = Template(t).render(ctx)
+        return ctx, out
     
     def test_simple_call(self):
         """
@@ -32,10 +39,16 @@ class SoftHyphenTest(TestCase):
         """
         Test simple usage of the hyphenation method via the femplatetag.
         """
-        pass
-    
+        before = "<h1>I love hyphenation</h1>"
+        after = softhyphen(before)
+        self.failUnlessEqual(after, "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>")
+        
     def test_spanish_filter(self):
         """
         Test usage of the blacklist with spanish via the femplatetag.
         """
-        pass
+        before = "<h1>Me encanta guiones</h1>"
+        after = softhyphen(before, language='es-es')
+        self.failUnlessEqual(after, "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>")
+
+

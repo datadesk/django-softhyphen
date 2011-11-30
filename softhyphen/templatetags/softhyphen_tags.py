@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import template
 register = template.Library()
-from html import hyphenate_html
+from softhyphen.html import hyphenate_html
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import stringfilter
 
