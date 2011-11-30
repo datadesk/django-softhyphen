@@ -7,4 +7,4 @@
 
 A Python library for hyphenating HTML in your Django project.
 
-Repurposed from Filipe Fortes "excellent AppEngine app":https://github.com/fortes/softhyphen.
+Repurposed from Filipe Fortes' "excellent AppEngine app":https://github.com/fortes/softhyphen.
