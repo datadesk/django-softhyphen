@@ -30,8 +30,9 @@ results = hyphenated_html("<p>Hola World</p>", language="es-es")</code></pre>
 
 ...Or use it as a template filter...
 
-(Warning! Because of its overhead, this not recommended in production if it needs to run each time the page loads.)
-
 <pre><code>{% load softhyphen_tags %}
 {{ text|softhyphen }}
 {{ text|softhyphen:"es-es" }}</code></pre>
+
+(Warning! Because of its overhead, the filter is not recommended in production if it needs to run each time the page loads.)
+
