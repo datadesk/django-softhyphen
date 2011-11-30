@@ -6,11 +6,6 @@ from templatetags.softhyphen_tags import softhyphen
 
 class SoftHyphenTest(TestCase):
     
-    def render(self, t, **c):
-        ctx = Context(c)
-        out = Template(t).render(ctx)
-        return ctx, out
-    
     def test_simple_call(self):
         """
         Test simple usage of the hyphenation method directly.

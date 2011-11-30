@@ -12,8 +12,7 @@ def softhyphen(value, language="en-us"):
     """
     return mark_safe(hyphenate_html(value, language=language))
 softhyphen.is_safe = True
-softhyphen.needs_autoescape = True
 softhyphen = stringfilter(softhyphen)
-softhyphen = register.tag(softhyphen)
+softhyphen = register.filter(softhyphen)
 
 
