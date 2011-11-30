@@ -8,3 +8,30 @@
 A Python library for hyphenating HTML in your Django project.
 
 Repurposed from Filipe Fortes' "excellent AppEngine app":https://github.com/fortes/softhyphen.
+
+h2. Features
+
+* Use the "&shy;":http://www.w3.org/TR/html4/struct/text.html#h-9.3.3 HTML entity to hyphenate text. Works well with "text-align:justify;":http://www.w3schools.com/cssref/pr_text_text-align.asp
+* Can be called as a function from inside Python code or as a filter in the Django template
+* Supports more than 25 languages
+
+h2. Getting started
+
+Install it.
+
+<pre><code>$ pip install django-softhyphen</code></pre>
+
+Use it in as a function...
+
+<pre><code>from soft_hyphen.html import hyphenate_html
+result = hyphenated_html("<p>Hello World</p>")
+# It is English by default, but you can provide another language.
+results = hyphenated_html("<p>Hola World</p>", language="es-es")</code></pre>
+
+...Or use it as a template filter...
+
+(Warning! Because of its overhead, this not recommended in production if it needs to run each time the page loads.)
+
+<pre><code>{% load softhyphen_tags %}
+{{ text|softhyphen }}
+{{ text|softhyphen:"es-es" }}</code></pre>
