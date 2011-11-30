@@ -21,6 +21,21 @@ class SoftHyphenTest(TestCase):
         self.failUnlessEqual(after, "<code>I love hyphenation</code>")
     
     def test_spanish_call(self):
+        """
+        Test usage of the blacklist with spanish
+        """
         before = "<h1>Me encanta guiones</h1>"
         after = hyphenate_html(before, language='es-es')
         self.failUnlessEqual(after, "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>")
+    
+    def test_simple_filter(self):
+        """
+        Test simple usage of the hyphenation method via the femplatetag.
+        """
+        pass
+    
+    def test_spanish_filter(self):
+        """
+        Test usage of the blacklist with spanish via the femplatetag.
+        """
+        pass
