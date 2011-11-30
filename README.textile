@@ -1,6 +1,6 @@
 
-<pre><code>         ___ _       _           _           
- ___ ___|  _| |_ ___| |_ _ _ ___| |_ ___ ___ 
+<pre><code>         ___ _       _           _
+ ___ ___|  _| |_ ___| |_ _ _ ___| |_ ___ ___
 |_ -| . |  _|  _|___|   | | | . |   | -_|   |
 |___|___|_| |_|     |_|_|_  |  _|_|_|___|_|_|
                         |___|_|              </code></pre>
@@ -31,10 +31,10 @@ Add it to the INSTALLED_APPS in your settings.py
 
 Use it in as a function.
 
-<pre><code>from soft_hyphen.html import hyphenate_html
-result = hyphenated_html("<p>Hello World</p>")
+<pre><code>from softhyphen.html import hyphenate_html
+result = hyphenate_html("<p>Hello World</p>")
 # It is English by default, but you can provide another language.
-result = hyphenated_html("<p>Hola World</p>", language="es-es")</code></pre>
+result = hyphenate_html("<p>Hola World</p>", language="es-es")</code></pre>
 
 Or use it as a template filter.
 
