@@ -31,15 +31,18 @@ Add it to the INSTALLED_APPS in your settings.py
 
 Use it in as a function.
 
-<pre><code>from softhyphen.html import hyphenate_html
-result = hyphenate_html("<p>Hello World</p>")
+<pre><code>>> from softhyphen.html import hyphenate_html
+>> hyphenate_html("<h1>I love hyphenation</h1>")
+"<h1>I love hy&shy;phen&shy;a&shy;tion</h1>"
 # It is English by default, but you can provide another language.
-result = hyphenate_html("<p>Hola World</p>", language="es-es")</code></pre>
+>> hyphenate_html("<h1>Me encanta guiones</h1>", language="es-es")
+<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1></code></pre>
 
 Or use it as a template filter.
 
 <pre><code>{% load softhyphen_tags %}
 {{ text|softhyphen }}
+{# You can specify another language as an argument. English is the default #}
 {{ text|softhyphen:"es-es" }}</code></pre>
 
 (Warning! Because of its overhead, the filter is not recommended in production if it needs to run each time the page loads.)
