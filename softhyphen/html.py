@@ -9,8 +9,11 @@ from hyphenator import Hyphenator
 from BeautifulSoup import BeautifulSoup, NavigableString
 
 
-def hyphenate_html(html, language='en-us', hyphenator=None, blacklist_tags= ('code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object', 'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea') ):
-    r"""
+def hyphenate_html(html, language='en-us', hyphenator=None, blacklist_tags=(
+    'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object',
+    'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea'
+    )):
+    """
     Hyphenate a fragement of HTML
 
     >>> hyphenate_html('<p>It is <em>beautiful</em> outside today!</p>')
