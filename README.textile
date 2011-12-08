@@ -31,11 +31,11 @@ Add it to the INSTALLED_APPS in your settings.py
 
 Use it in as a function.
 
-<pre><code>>> from softhyphen.html import hyphenate_html
->>> hyphenate_html("<h1>I love hyphenation</h1>")
+<pre><code>>> from softhyphen.html import hyphenate
+>>> hyphenate("<h1>I love hyphenation</h1>")
 "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>"
 >>> # It is English by default, but you can provide another language.
->>> hyphenate_html("<h1>Me encanta guiones</h1>", language="es-es")
+>>> hyphenate("<h1>Me encanta guiones</h1>", language="es-es")
 <h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1></code></pre>
 
 Or use it as a template filter.
