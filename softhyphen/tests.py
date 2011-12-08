@@ -1,4 +1,4 @@
-from html import hyphenate_html
+from html import hyphenate
 from django.test import TestCase
 from django.template import Template, Context
 from templatetags.softhyphen_tags import softhyphen
@@ -11,7 +11,7 @@ class SoftHyphenTest(TestCase):
         Test simple usage of the hyphenation method directly.
         """
         before = "<h1>I love hyphenation</h1>"
-        after = hyphenate_html(before)
+        after = hyphenate(before)
         self.failUnlessEqual(after, "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>")
     
     def test_tag_blacklist_call(self):
@@ -19,7 +19,7 @@ class SoftHyphenTest(TestCase):
         Test the blacklist to make sure some tags don't get hyphenated.
         """
         before = "<code>I love hyphenation</code>"
-        after = hyphenate_html(before)
+        after = hyphenate(before)
         self.failUnlessEqual(after, "<code>I love hyphenation</code>")
     
     def test_spanish_call(self):
@@ -27,7 +27,7 @@ class SoftHyphenTest(TestCase):
         Test usage of the blacklist with spanish
         """
         before = "<h1>Me encanta guiones</h1>"
-        after = hyphenate_html(before, language='es-es')
+        after = hyphenate(before, language='es-es')
         self.failUnlessEqual(after, "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>")
     
     def test_simple_filter(self):
