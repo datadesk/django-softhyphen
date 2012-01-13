@@ -11,7 +11,8 @@ from BeautifulSoup import BeautifulSoup, NavigableString
 
 def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
     'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object',
-    'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea'
+    'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea',
+    'span',
     )):
     """
     Hyphenate a fragement of HTML
