@@ -26,7 +26,6 @@ def cached_softhyphen(value, language=translation.get_language()):
     """
     Hyphenates html and caches result.
     """
-    print translation.get_language()
     md5 = hashlib.md5()
     md5.update(value.encode('utf-8'))
     digest = md5.hexdigest()
