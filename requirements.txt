@@ -1,3 +1,1 @@
 BeautifulSoup==3.2.0
-distribute==0.6.19
-wsgiref==0.1.2
