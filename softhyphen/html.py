@@ -48,7 +48,7 @@ def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
 # Constants
 SOFT_HYPHEN = r'&shy;'
 SPACE = r' '
-STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE)
+STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE|re.UNICODE)
 
 def hyphenate_element(soup, hyphenator, blacklist_tags):
     """
