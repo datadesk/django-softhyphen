@@ -46,4 +46,12 @@ class SoftHyphenTest(TestCase):
         after = softhyphen(before, language='es-es')
         self.failUnlessEqual(after, "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>")
 
+    def test_russian_filter(self):
+        """
+        Test usage of the templatetag with Russian.
 
+        Also tests that the tag works properly with non-ascii characters.
+        """
+        before = u'<h1>\u042f \u043b\u044e\u0431\u043b\u044e \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u044b.</h1>'
+        after = softhyphen(before, language='ru-ru')
+        self.failUnlessEqual(after, u'<h1>\u042f \u043b\u044e&shy;\u0431\u043b\u044e \u043f\u0435&shy;\u0440\u0435&shy;\u043d\u043e&shy;\u0441\u044b.</h1>')
