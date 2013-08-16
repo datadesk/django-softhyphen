@@ -9,6 +9,8 @@ A Python library for hyphenating HTML in your Django project.
 
 Repurposed from Filipe Fortes' "excellent AppEngine app":https://github.com/fortes/softhyphen.
 
+!https://travis-ci.org/datadesk/django-softhyphen.png!:https://travis-ci.org/datadesk/django-softhyphen
+
 h2. Features
 
 * Use the <code>&shy;</code> "HTML entity":http://www.w3.org/TR/html4/struct/text.html#h-9.3.3 to hyphenate text. Works well with "text-align:justify;":http://www.w3schools.com/cssref/pr_text_text-align.asp
