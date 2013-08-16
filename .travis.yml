@@ -12,6 +12,11 @@ env:
   - DJANGO_VERSION=1.3.7
   - DJANGO_VERSION=1.4.6
   - DJANGO_VERSION=1.5.2
+# Exclude Python 2.5 for Django > 1.5
+matrix:
+  exclude:
+    - python: "2.5"
+      env: "DJANGO_VERSION=1.5.2"
 # Tell it the things it will need to install when it boots
 install: 
    # This is a dependency of our Django test script
@@ -24,3 +29,4 @@ install:
  - pip install -q Django==$DJANGO_VERSION --use-mirrors
 # Tell Travis how to run the test script itself
 script: python quicktest.py softhyphen
+
