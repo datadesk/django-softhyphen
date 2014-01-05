@@ -5,48 +5,63 @@
 |___|___|_| |_|     |_|_|_  |  _|_|_|___|_|_|
                         |___|_|              </code></pre>
 
-A Python library for hyphenating HTML in your Django project.
+A Python library for hyphenating HTML in your Django project
 
 Repurposed from Filipe Fortes' "excellent AppEngine app":https://github.com/fortes/softhyphen.
 
-!https://travis-ci.org/datadesk/django-softhyphen.png!:https://travis-ci.org/datadesk/django-softhyphen
+[![Build Status](https://travis-ci.org/datadesk/django-softhyphen.png?branch=master)](https://travis-ci.org/datadesk/django-softhyphen)
+[![PyPI version](https://badge.fury.io/py/django-softhyphen.png)](http://badge.fury.io/py/django-softhyphen)
+[![Coverage Status](https://coveralls.io/repos/datadesk/django-softhyphen/badge.png?branch=master)](https://coveralls.io/r/datadesk/django-softhyphen?branch=master)
 
-h2. Features
+* Issues: [https://github.com/datadesk/django-softhyphen/issues](https://github.com/datadesk/django-softhyphen/issues)
+* Packaging: [https://pypi.python.org/pypi/django-softhyphen](https://pypi.python.org/pypi/django-softhyphen)
+* Testing: [https://travis-ci.org/datadesk/django-softhyphen](https://travis-ci.org/datadesk/django-softhyphen)
+* Coverage: [https://coveralls.io/r/datadesk/django-softhyphen](https://coveralls.io/r/datadesk/django-softhyphen)
+
+Features
+--------
 
 * Use the <code>&shy;</code> "HTML entity":http://www.w3.org/TR/html4/struct/text.html#h-9.3.3 to hyphenate text. Works well with "text-align:justify;":http://www.w3schools.com/cssref/pr_text_text-align.asp
 * Can be called as a function from inside Python code or as a filter in the Django template
 * Supports more than 25 languages
-* Supports Python 2.5, 2.6 and 2.7 and Django 1.1-1.5
 
-h2. Getting started
+Getting started
+---------------
 
 Install it.
 
-<pre><code>$ pip install django-softhyphen</code></pre>
+```bash
+$ pip install django-softhyphen
+```
 
 Add it to the INSTALLED_APPS in your settings.py
 
-<pre><code>INSTALLED_APPS = (
+```python
+INSTALLED_APPS = (
     ...
     'softhyphen',
     ...
-)</code></pre>
+)
+```
 
 Use it in as a function.
 
-<pre><code>>> from softhyphen.html import hyphenate
+```python
+>>> from softhyphen.html import hyphenate
 >>> hyphenate("<h1>I love hyphenation</h1>")
 "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>"
 >>> # It is English by default, but you can provide another language.
 >>> hyphenate("<h1>Me encanta guiones</h1>", language="es-es")
-<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1></code></pre>
+<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>
+```
 
 Or use it as a template filter.
 
-<pre><code>{% load softhyphen_tags %}
+```django+html
+{% load softhyphen_tags %}
 {{ text|softhyphen }}
 {# You can specify another language as an argument. English is the default #}
-{{ text|softhyphen:"es-es" }}</code></pre>
+{{ text|softhyphen:"es-es" }}
+```
 
 (Warning! Because of its overhead, the filter is not recommended in production if it needs to run each time the page loads.)
-

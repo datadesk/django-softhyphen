@@ -1,0 +1,7 @@
+[run]
+include =
+    softhyphen/*
+
+omit =
+    softhyphen/tests.py
+    softhyphen/dicts/*
