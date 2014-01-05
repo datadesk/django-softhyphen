@@ -6,30 +6,30 @@ Author: Filipe Fortes
 import os
 import re
 from hyphenator import Hyphenator
-from BeautifulSoup import BeautifulSoup, NavigableString
+from BeautifulSoup import BeautifulSoup
 
 
 def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
     'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object',
     'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea',
-    'span',
-    )):
+    'span')
+        ):
     """
     Hyphenate a fragement of HTML
 
-    >>> hyphenate_html('<p>It is <em>beautiful</em> outside today!</p>')
+    >>> hyphenate('<p>It is <em>beautiful</em> outside today!</p>')
     u'<p>It is <em>beau&shy;ti&shy;ful</em> out&shy;side today!</p>'
 
-    >>> hyphenate_html('O paralelepipedo atrevessou a rua', 'pt-br')
-    u'O pa&shy;ra&shy;le&shy;le&shy;pi&shy;pe&shy;do atre&shy;ves&shy;sou a rua'
+    >>> hyphenate('O paralelepipedo atrevessou', 'pt-br')
+    u'O pa&shy;ra&shy;le&shy;le&shy;pi&shy;pe&shy;do atre&shy;ves&shy;sou'
 
     Content inside <code>, <tt>, and <pre> blocks is not hyphenated
-    >>> hyphenate_html('Document: <code>document + page_status</code>')
+    >>> hyphenate('Document: <code>document + page_status</code>')
     u'Doc&shy;u&shy;ment: <code>document + page_status</code>'
 
     Short words are not hyphenated
 
-    >>> hyphenate_html("<p>The brave men, living and dead.</p>")
+    >>> hyphenate("<p>The brave men, living and dead.</p>")
     u'<p>The brave men, liv&shy;ing and dead.</p>'
     """
     # Load hyphenator if one is not provided
@@ -48,7 +48,8 @@ def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
 # Constants
 SOFT_HYPHEN = r'&shy;'
 SPACE = r' '
-STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE|re.UNICODE)
+STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE | re.UNICODE)
+
 
 def hyphenate_element(soup, hyphenator, blacklist_tags):
     """
@@ -57,20 +58,21 @@ def hyphenate_element(soup, hyphenator, blacklist_tags):
     """
     # Blacklist function
     BLACKLIST = lambda tag: tag in blacklist_tags
-    
+
     # Find any element with text in it
-    paragraphs = soup.findAll(text = lambda text: len(text) > 0)
+    paragraphs = soup.findAll(text=lambda text: len(text) > 0)
     for paragraph in paragraphs:
         # Make sure element isn't on blacklist
         if not BLACKLIST(paragraph.parent.name):
             # Replace text with hyphened version
             paragraph.replaceWith(STRIP_WHITESPACE.sub(
-                (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)), paragraph)
+                (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)),
+                paragraph
+                )
             )
     return soup
-            
 
-    
+
 DICTIONARIES = {
     'cs-cz': 'hyph_cs_CZ',
     'da-dk': 'hyph_da_DK',
@@ -102,6 +104,8 @@ DICTIONARIES = {
     'sv-se': 'hyph_sv_SE',
     'uk-ua': 'hyph_uk_UA'
 }
+
+
 def get_hyphenator_for_language(language):
     """
     Create a Hyphenator for the given language. Uses English if the
@@ -121,11 +125,13 @@ def get_hyphenator_for_language(language):
     )
     return Hyphenator(path)
 
+
 # Test when standalone
 def _test():
     """Run doctests"""
     import doctest
     doctest.testmod(verbose=True)
+
 
 if __name__ == '__main__':
     _test()
