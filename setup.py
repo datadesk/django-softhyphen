@@ -76,7 +76,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 
 setup(
       name='django-softhyphen',
-      version='0.1.6',
+      version='0.2.0',
       description='A Python library for hyphenating HTML in your Django project',
       author='Ben Welsh',
       author_email='ben.welsh@gmail.com',
@@ -85,6 +85,8 @@ setup(
       cmdclass = cmdclasses,
       data_files=data_files,
       include_package_data=True,
-      install_requires=['BeautifulSoup>=3.2.0'],
+      install_requires=[
+        'beautifulsoup4==4.3.2',
+        'six==1.5.1'
+      ],
 )
-

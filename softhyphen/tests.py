@@ -1,6 +1,9 @@
-from html import hyphenate
+from __future__ import absolute_import
+
+import six
+from .html import hyphenate
 from django.test import TestCase
-from templatetags.softhyphen_tags import softhyphen
+from .templatetags.softhyphen_tags import softhyphen
 
 
 class SoftHyphenTest(TestCase):
@@ -54,7 +57,7 @@ class SoftHyphenTest(TestCase):
         after = softhyphen(before, language='es-es')
         self.failUnlessEqual(
             after,
-            "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>"
+            six.u("<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>")
         )
 
     def test_russian_filter(self):
@@ -63,6 +66,9 @@ class SoftHyphenTest(TestCase):
 
         Also tests that the tag works properly with non-ascii characters.
         """
-        before = u'<h1>\u043f\u0435\u0440\u0435.</h1>'
+        before = six.u('<h1>\u043f\u0435\u0440\u0435.</h1>')
         after = softhyphen(before, language='ru-ru')
-        self.failUnlessEqual(after, u'<h1>\u043f\u0435&shy;\u0440\u0435.</h1>')
+        self.failUnlessEqual(
+            after,
+            six.u('<h1>\u043f\u0435&shy;\u0440\u0435.</h1>')
+        )

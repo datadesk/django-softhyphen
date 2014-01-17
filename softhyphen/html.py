@@ -1,12 +1,26 @@
 """
 Hyphenates an HTML fragement using soft hyphens
 
-Author: Filipe Fortes
+Author by Filipe Fortes, modified by Ben Welsh
 """
+from __future__ import absolute_import
+
 import os
 import re
-from hyphenator import Hyphenator
-from BeautifulSoup import BeautifulSoup
+import six
+from bs4 import BeautifulSoup
+from .hyphenator import Hyphenator
+from bs4.element import PreformattedString
+
+
+class DontEscapeDammit(PreformattedString):
+    """
+    A BeautifulSoup trick that lets us insert a `&shy;` into the HTML
+    without BS escaping the `&` and turning it into `&amp;shy;`.
+    """
+    def output_ready(self, formatter=None):
+        self.format_string(self, formatter)
+        return self.PREFIX + self + self.SUFFIX
 
 
 def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
@@ -42,7 +56,7 @@ def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
     # Recursively hyphenate each element
     hyphenate_element(soup, hyphenator, blacklist_tags)
 
-    return unicode(soup)
+    return six.text_type(soup)
 
 
 # Constants
@@ -65,11 +79,11 @@ def hyphenate_element(soup, hyphenator, blacklist_tags):
         # Make sure element isn't on blacklist
         if not BLACKLIST(paragraph.parent.name):
             # Replace text with hyphened version
-            paragraph.replaceWith(STRIP_WHITESPACE.sub(
+            new_string = STRIP_WHITESPACE.sub(
                 (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)),
                 paragraph
-                )
             )
+            paragraph.replaceWith(DontEscapeDammit(new_string))
     return soup
 
 

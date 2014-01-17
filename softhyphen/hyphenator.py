@@ -12,6 +12,7 @@ info@wilbertberendsen.nl
 
 License: LGPL. More info: http://python-hyphenator.googlecode.com/
 """
+import six
 import sys
 import re
 
@@ -26,7 +27,7 @@ parse = re.compile(r'(\d?)(\D?)').findall
 
 
 def hexrepl(matchObj):
-    return unichr(int(matchObj.group(1), 16))
+    return six.unichr(int(matchObj.group(1), 16))
 
 
 class parse_alt(object):
@@ -95,7 +96,9 @@ class Hyph_dict(object):
                 factory = parse_alt(pat, alt)
             else:
                 factory = int
-            tag, value = zip(*[(s, factory(i or "0")) for i, s in parse(pat)])
+            tag, value = list(
+                zip(*[(s, factory(i or "0")) for i, s in parse(pat)])
+            )
             # if only zeros, skip this pattern
             if max(value) == 0:
                 continue
@@ -108,7 +111,7 @@ class Hyph_dict(object):
             self.patterns[''.join(tag)] = start, value[start:end]
         f.close()
         self.cache = {}
-        self.maxlen = max(map(len, self.patterns.keys()))
+        self.maxlen = max(list(map(len, list(self.patterns.keys()))))
 
     def positions(self, word):
         """
@@ -139,7 +142,7 @@ class Hyph_dict(object):
                     if p:
                         offset, value = p
                         s = slice(i + offset, i + offset + len(value))
-                        res[s] = map(max, value, res[s])
+                        res[s] = list(map(max, value, res[s]))
 
             points = [dint(i - 1, ref=r) for i, r in enumerate(res) if r % 2]
             self.cache[word] = points
@@ -237,4 +240,4 @@ if __name__ == "__main__":
     h = Hyphenator(dict_file, left=1, right=1)
 
     for i in h(word):
-        print i
+        six.print_(i)
