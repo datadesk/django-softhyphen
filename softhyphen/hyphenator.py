@@ -241,7 +241,7 @@ class Hyphenator(object):
     __call__ = iterate
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     dict_file = sys.argv[1]
     word = sys.argv[2].decode('latin1')

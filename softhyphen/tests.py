@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
 import six
@@ -36,6 +38,24 @@ class SoftHyphenTest(TestCase):
         self.failUnlessEqual(
             after,
             "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>"
+        )
+
+    def test_braille_language_call(self):
+        """
+        Test usage with Braille language call.
+        """
+        before = "<h1>⠓⠁⠍-⠃⠥⠗⠛⠑⠗</h1>"
+        after = hyphenate(before, language='hu-hu')
+
+    def test_foo_language_call(self):
+        """
+        Test usage with a made up language.
+        """
+        before = "<h1>I love hyphenation</h1>"
+        after = hyphenate(before, language='foobar')
+        self.failUnlessEqual(
+            after,
+            "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>"
         )
 
     def test_simple_filter(self):
