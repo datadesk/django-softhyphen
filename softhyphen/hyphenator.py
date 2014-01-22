@@ -15,6 +15,8 @@ License: LGPL. More info: http://python-hyphenator.googlecode.com/
 import six
 import sys
 import re
+from bs4 import UnicodeDammit
+
 
 __all__ = ("Hyphenator")
 
@@ -79,13 +81,16 @@ class Hyph_dict(object):
     """
     def __init__(self, filename):
         self.patterns = {}
-        f = open(filename)
-        charset = f.readline().strip()
-        if charset.startswith('charset '):
-            charset = charset[8:].strip()
-
+        f = open(filename, mode='rb')
+        charset = next(f).strip()
+        if six.PY3:
+            f = open(filename, mode='r',
+                encoding=UnicodeDammit(charset).unicode_markup)
         for pat in f:
-            pat = pat.decode(charset).strip()
+            if six.PY2:
+                pat = pat.decode(charset).strip()
+            else:
+                pat = six.text_type(pat).strip()
             if not pat or pat[0] == '%':
                 continue
             # replace ^^hh with the real character
@@ -109,6 +114,7 @@ class Hyph_dict(object):
             while not value[end-1]:
                 end -= 1
             self.patterns[''.join(tag)] = start, value[start:end]
+
         f.close()
         self.cache = {}
         self.maxlen = max(list(map(len, list(self.patterns.keys()))))
@@ -215,7 +221,7 @@ class Hyphenator(object):
         the string 'let-ter-gre-pen'. The hyphen string to use can be
         given as the second parameter, that defaults to '-'.
         """
-        if isinstance(word, str):
+        if isinstance(word, str) and six.PY2:
             word = word.decode('latin1')
         l = list(word)
         for p in reversed(self.positions(word)):
