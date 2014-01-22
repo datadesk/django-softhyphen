@@ -76,7 +76,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 
 setup(
       name='django-softhyphen',
-      version='0.3.0',
+      version='0.30',
       description='A Python library for hyphenating HTML in your Django project',
       author='Ben Welsh',
       author_email='ben.welsh@gmail.com',
