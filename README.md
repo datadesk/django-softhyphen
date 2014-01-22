@@ -21,7 +21,7 @@ Repurposed from Filipe Fortes' [excellent AppEngine app](https://github.com/fort
 Features
 --------
 
-* Use the <code>&shy;</code> [HTML entity](http://www.w3.org/TR/html4/struct/text.html#h-9.3.3) to hyphenate text. Works well with [text-align:justify;](http://www.w3schools.com/cssref/pr_text_text-align.asp)
+* Use the ``&shy;`` [HTML entity](http://www.w3.org/TR/html4/struct/text.html#h-9.3.3) to hyphenate text. Works well with [text-align:justify;](http://www.w3schools.com/cssref/pr_text_text-align.asp)
 * Can be called as a function from inside Python code or as a filter in the Django template
 * Supports more than 25 languages
 
