@@ -45,7 +45,7 @@ class SoftHyphenTest(TestCase):
         Test usage with Braille language call.
         """
         before = "<h1>⠓⠁⠍-⠃⠥⠗⠛⠑⠗</h1>"
-        after = hyphenate(before, language='hu-hu')
+        hyphenate(before, language='hu-hu')
 
     def test_foo_language_call(self):
         """
