@@ -84,8 +84,11 @@ class Hyph_dict(object):
         f = open(filename, mode='rb')
         charset = next(f).strip()
         if six.PY3:
-            f = open(filename, mode='r',
-                encoding=UnicodeDammit(charset).unicode_markup)
+            f = open(
+                filename,
+                mode='r',
+                encoding=UnicodeDammit(charset).unicode_markup
+            )
         for pat in f:
             if six.PY2:
                 pat = pat.decode(charset).strip()
