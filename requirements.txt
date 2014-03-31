@@ -1,6 +1,5 @@
-Django==1.6.1
 PyYAML==3.10
-argparse==1.2.1
+argparse
 beautifulsoup4==4.3.2
 coverage==3.7.1
 pep8==1.4.6
