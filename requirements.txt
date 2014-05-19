@@ -4,7 +4,7 @@ beautifulsoup4==4.3.2
 coverage==3.7.1
 pep8==1.4.6
 py==1.4.19
-pyflakes==0.7.3
+pyflakes
 python-coveralls==2.4.2
 requests==2.1.0
 sh==1.09
