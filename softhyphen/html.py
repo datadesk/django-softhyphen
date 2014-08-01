@@ -131,7 +131,7 @@ def get_hyphenator_for_language(language):
     language = language.lower()
 
     # Fallback to English
-    if not language in DICTIONARIES:
+    if language not in DICTIONARIES:
         language = 'en-us'
     path = os.path.join(
         os.path.dirname(__file__),
