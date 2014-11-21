@@ -1,23 +1,9 @@
-
-<pre><code>         ___ _       _           _
- ___ ___|  _| |_ ___| |_ _ _ ___| |_ ___ ___
-|_ -| . |  _|  _|___|   | | | . |   | -_|   |
-|___|___|_| |_|     |_|_|_  |  _|_|_|___|_|_|
-                        |___|_|              </code></pre>
+django-softhyphen
+=================
 
 A Python library for hyphenating HTML in your Django project
 
 Repurposed from Filipe Fortes' [excellent AppEngine app](https://github.com/fortes/softhyphen).
-
-[![Build Status](https://travis-ci.org/datadesk/django-softhyphen.png?branch=master)](https://travis-ci.org/datadesk/django-softhyphen)
-[![PyPI version](https://badge.fury.io/py/django-softhyphen.png)](http://badge.fury.io/py/django-softhyphen)
-[![Coverage Status](https://coveralls.io/repos/datadesk/django-softhyphen/badge.png?branch=master)](https://coveralls.io/r/datadesk/django-softhyphen?branch=master)
-
-* Docs: [django-softhyphen.rtfd.org](https://django-softhyphen.rtfd.org)
-* Issues: [github.com/datadesk/django-softhyphen/issues](https://github.com/datadesk/django-softhyphen/issues)
-* Packaging: [pypi.python.org/pypi/django-softhyphen](https://pypi.python.org/pypi/django-softhyphen)
-* Testing: [travis-ci.org/datadesk/django-softhyphen](https://travis-ci.org/datadesk/django-softhyphen)
-* Coverage: [coveralls.io/r/datadesk/django-softhyphen](https://coveralls.io/r/datadesk/django-softhyphen)
 
 Features
 --------
@@ -66,3 +52,17 @@ Or use it as a template filter.
 ```
 
 (Warning! Because of its overhead, the filter is not recommended in production if it needs to run each time the page loads.)
+
+Other resources
+---------------
+
+[![Build Status](https://travis-ci.org/datadesk/django-softhyphen.png?branch=master)](https://travis-ci.org/datadesk/django-softhyphen)
+[![PyPI version](https://badge.fury.io/py/django-softhyphen.png)](http://badge.fury.io/py/django-softhyphen)
+[![Coverage Status](https://coveralls.io/repos/datadesk/django-softhyphen/badge.png?branch=master)](https://coveralls.io/r/datadesk/django-softhyphen?branch=master)
+
+* Repo: [https://github.com/datadesk/django-softhyphen](https://github.com/datadesk/django-softhyphen)
+* Issues: [https://github.com/datadesk/django-softhyphen/issues](https://github.com/datadesk/django-softhyphen/issues)
+* Packaging: [https://pypi.python.org/pypi/django-softhyphen](https://pypi.python.org/pypi/django-softhyphen)
+* Testing: [https://travis-ci.org/datadesk/django-softhyphen](https://travis-ci.org/datadesk/django-softhyphen)
+* Coverage: [https://coveralls.io/r/datadesk/django-softhyphen](https://coveralls.io/r/datadesk/django-softhyphen)
+
