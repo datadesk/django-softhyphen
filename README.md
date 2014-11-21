@@ -65,4 +65,5 @@ Or use it as a template filter.
 {{ text|softhyphen:"es-es" }}
 ```
 
+
 (Warning! Because of its overhead, the filter is not recommended in production if it needs to run each time the page loads.)
