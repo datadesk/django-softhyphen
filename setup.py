@@ -45,8 +45,14 @@ setup(
     author='Ben Welsh',
     author_email='ben.welsh@gmail.com',
     install_requires=(
-        'beautifulsoup4>=4.3.2',
-        'six>=1.5.1'
+        'beautifulsoup4',
+        'six'
+    ),
+    classifiers=(
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
     ),
     cmdclass={'test': TestCommand}
 )
