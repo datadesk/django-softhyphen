@@ -13,8 +13,8 @@ from .hyphenator import Hyphenator
 from bs4.element import PreformattedString
 from django.conf import settings
 
-BEAUTIFULSOUP_BUILDER_FEATURES = \
-    getattr(settings, 'SOFTHYPHEN_BEAUTIFULSOUP_BUILDER_FEATURES', ['html.parser'])
+BEAUTIFULSOUP_BUILDER_FEATURES = getattr(settings,
+    'SOFTHYPHEN_BEAUTIFULSOUP_BUILDER_FEATURES', ['html.parser'])
 
 
 class DontEscapeDammit(PreformattedString):
