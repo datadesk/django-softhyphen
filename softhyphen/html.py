@@ -51,7 +51,7 @@ def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
         hyphenator = get_hyphenator_for_language(language)
 
     # Create HTML tree
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, "html.parser")
 
     # Recursively hyphenate each element
     hyphenate_element(soup, hyphenator, blacklist_tags)
