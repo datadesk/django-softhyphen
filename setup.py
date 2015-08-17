@@ -25,6 +25,9 @@ class TestCommand(Command):
             INSTALLED_APPS=('softhyphen',)
         )
         from django.core.management import call_command
+        import django
+        if django.VERSION[:2] >= (1, 7):
+            django.setup()
         call_command('test', 'softhyphen')
 
 
