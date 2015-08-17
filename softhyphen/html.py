@@ -65,19 +65,20 @@ SPACE = r' '
 STRIP_WHITESPACE = re.compile('\w+', re.MULTILINE | re.UNICODE)
 
 
+def blacklist(name, blacklist):
+    return name in blacklist
+
+
 def hyphenate_element(soup, hyphenator, blacklist_tags):
     """
     Hyphenate the text within an element, returning the hyphenated version
     Walks the DOM Tree to track down all text
     """
-    # Blacklist function
-    BLACKLIST = lambda tag: tag in blacklist_tags
-
     # Find any element with text in it
     paragraphs = soup.findAll(text=lambda text: len(text) > 0)
     for paragraph in paragraphs:
         # Make sure element isn't on blacklist
-        if not BLACKLIST(paragraph.parent.name):
+        if not blacklist(paragraph.parent.name, blacklist_tags):
             # Replace text with hyphened version
             new_string = STRIP_WHITESPACE.sub(
                 (lambda x: hyphenator.inserted(x.group(), SOFT_HYPHEN)),

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import template
-register = template.Library()
 from softhyphen.html import hyphenate
+register = template.Library()
 
 
 @register.filter
