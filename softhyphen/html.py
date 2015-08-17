@@ -11,10 +11,6 @@ import six
 from bs4 import BeautifulSoup
 from .hyphenator import Hyphenator
 from bs4.element import PreformattedString
-from django.conf import settings
-
-BEAUTIFULSOUP_BUILDER_FEATURES = getattr(settings,
-    'SOFTHYPHEN_BEAUTIFULSOUP_BUILDER_FEATURES', ['html.parser'])
 
 
 class DontEscapeDammit(PreformattedString):
@@ -55,7 +51,7 @@ def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
         hyphenator = get_hyphenator_for_language(language)
 
     # Create HTML tree
-    soup = BeautifulSoup(html, features=BEAUTIFULSOUP_BUILDER_FEATURES)
+    soup = BeautifulSoup(html, "html.parser")
 
     # Recursively hyphenate each element
     hyphenate_element(soup, hyphenator, blacklist_tags)
