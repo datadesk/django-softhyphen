@@ -9,6 +9,7 @@ import os
 import re
 import six
 from bs4 import BeautifulSoup
+from django.utils.translation import get_language
 from .hyphenator import Hyphenator
 from bs4.element import PreformattedString
 
@@ -23,7 +24,7 @@ class DontEscapeDammit(PreformattedString):
         return self.PREFIX + self + self.SUFFIX
 
 
-def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
+def hyphenate(html, language=None, hyphenator=None, blacklist_tags=(
     'code', 'tt', 'pre', 'head', 'title', 'script', 'style', 'meta', 'object',
     'embed', 'samp', 'var', 'math', 'select', 'option', 'input', 'textarea',
     'span')
@@ -47,6 +48,15 @@ def hyphenate(html, language='en-us', hyphenator=None, blacklist_tags=(
     u'<p>The brave men, liv&shy;ing and dead.</p>'
     """
     # Load hyphenator if one is not provided
+    if not language:
+        language = get_language()
+
+    if language == 'en':
+        language = 'en-us'
+    elif '-' not in language:
+        # Language code is "en-us", "it-it", "nl-nl"
+        language = "{0}-{0}".format(language)
+
     if not hyphenator:
         hyphenator = get_hyphenator_for_language(language)
 
