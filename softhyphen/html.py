@@ -49,7 +49,7 @@ def hyphenate(html, language=None, hyphenator=None, blacklist_tags=(
     """
     # Load hyphenator if one is not provided
     if not language:
-        language = get_language()
+        language = get_language() or 'en-us'
 
     if language == 'en':
         language = 'en-us'
