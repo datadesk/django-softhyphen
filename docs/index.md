@@ -31,13 +31,19 @@ INSTALLED_APPS = (
 )
 ```
 
+By default, it expects English but you can change that in ``settings.py``.
+
+```python
+LANGUAGE_CODE = 'es-es' # Or whatever other language code you'd like
+```
+
 Use it in as a function.
 
 ```python
 >>> from softhyphen.html import hyphenate
 >>> hyphenate("<h1>I love hyphenation</h1>")
 "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>"
->>> # It is English by default, but you can provide another language.
+>>> # It is English by default, but you can provide another LANGUAGE_CODE in settings.py or at runtime like this
 >>> hyphenate("<h1>Me encanta guiones</h1>", language="es-es")
 <h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>
 ```
@@ -47,7 +53,7 @@ Or use it as a template filter.
 ```django+html
 {% load softhyphen_tags %}
 {{ text|softhyphen }}
-{# You can specify another language as an argument. English is the default #}
+{# You can specify another language as an argument. English is the default. #}
 {{ text|softhyphen:"es-es" }}
 ```
 
@@ -65,4 +71,3 @@ Other resources
 * Packaging: [https://pypi.python.org/pypi/django-softhyphen](https://pypi.python.org/pypi/django-softhyphen)
 * Testing: [https://travis-ci.org/datadesk/django-softhyphen](https://travis-ci.org/datadesk/django-softhyphen)
 * Coverage: [https://coveralls.io/r/datadesk/django-softhyphen](https://coveralls.io/r/datadesk/django-softhyphen)
-
