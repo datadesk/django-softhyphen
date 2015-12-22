@@ -34,11 +34,21 @@ class SoftHyphenTest(TestCase):
         Test usage of the blacklist with spanish
         """
         before = "<h1>Me encanta guiones</h1>"
-        after = hyphenate(before, language='es-es')
-        self.failUnlessEqual(
-            after,
-            "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>"
-        )
+        with self.settings(LANGUAGE_CODE='es-es'):
+            after = hyphenate(before)
+            self.failUnlessEqual(
+                after,
+                "<h1>Me en&shy;can&shy;ta gu&shy;io&shy;nes</h1>"
+            )
+
+    def test_no_language_code(self):
+        before = "<h1>I love hyphenation</h1>"
+        with self.settings(LANGUAGE_CODE=None):
+            after = hyphenate(before)
+            self.failUnlessEqual(
+                after,
+                "<h1>I love hy&shy;phen&shy;a&shy;tion</h1>"
+            )
 
     def test_braille_language_call(self):
         """
