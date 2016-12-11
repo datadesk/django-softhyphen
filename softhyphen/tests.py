@@ -102,3 +102,14 @@ class SoftHyphenTest(TestCase):
             after,
             six.u('<h1>\u043f\u0435&shy;\u0440\u0435.</h1>')
         )
+
+    def test_linebreak_fix(self):
+        '''
+        Test that <br> tags are handled correctly.
+        '''
+        before = six.u('<p>Breaking<br>changes</p>')
+        after = hyphenate(before)
+        self.failUnlessEqual(
+            after,
+            six.u('<p>Break&shy;ing<br>changes</p>')
+        )

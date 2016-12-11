@@ -66,7 +66,7 @@ def hyphenate(html, language=None, hyphenator=None, blacklist_tags=(
     # Recursively hyphenate each element
     hyphenate_element(soup, hyphenator, blacklist_tags)
 
-    return six.text_type(soup)
+    return fix_linebreaks(six.text_type(soup))
 
 
 # Constants
@@ -149,6 +149,10 @@ def get_hyphenator_for_language(language):
         'dicts/%s.dic' % DICTIONARIES[language]
     )
     return Hyphenator(path)
+
+
+def fix_linebreaks(html):
+    return html.replace('</br>', '')
 
 
 # Test when standalone
